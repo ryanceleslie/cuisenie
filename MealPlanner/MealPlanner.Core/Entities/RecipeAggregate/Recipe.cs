@@ -13,12 +13,16 @@ namespace MealPlanner.Core.Entities.RecipeAggregate
         public string Title { get; set; }
         public int Servings { get; set; }
         public int Rating { get; set; }
+        public TimeSpan Prep { get; set; }
+        public TimeSpan Cook { get; set; }
+        public TimeSpan Ready { get; set; }
+        public string ExternalUrl { get; set; }
 
-        private readonly List<Ingredient> _ingredients = new List<Ingredient>();
-        public IReadOnlyCollection<Ingredient> Ingredients => _ingredients.AsReadOnly();
+        private List<Ingredient> _ingredients = new List<Ingredient>();
+        public IEnumerable<Ingredient> Ingredients => _ingredients;
 
-        private readonly List<Instruction> _instructions = new List<Instruction>();
-        public IReadOnlyCollection<Instruction> Instructions => _instructions.AsReadOnly();
+        private List<Instruction> _instructions = new List<Instruction>();
+        public IEnumerable<Instruction> Instructions => _instructions;
 
         public Recipe()
         {

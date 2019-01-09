@@ -1,12 +1,12 @@
 ﻿namespace MealPlanner.Core.Entities.RecipeAggregate
 {
-    public class Measurement // ValueObject
+    public class NutritionType // ValueObject
     {
         public string Type { get; set; }
 
-        public Measurement() { }
+        public NutritionType() { }
 
-        public Measurement(string type)
+        public NutritionType(string type)
         {
             Type = type;
         }
