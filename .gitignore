@@ -259,4 +259,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
-/MealPlanner/API/appsettings.Development.json
+
+# remove from source control because of connection strings
+appsettings.Development.json
