@@ -2,7 +2,7 @@
 {
     public class Measurement // ValueObject
     {
-        public string Type { get; set; }
+        public string Type { get; private set; }
 
         public Measurement() { }
 
