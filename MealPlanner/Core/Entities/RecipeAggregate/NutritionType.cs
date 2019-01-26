@@ -2,13 +2,13 @@
 {
     public class NutritionType // ValueObject
     {
-        public string Type { get; private set; }
+        public string Name { get; private set; }
 
         public NutritionType() { }
 
-        public NutritionType(string type)
+        public NutritionType(string name)
         {
-            Type = type;
+            Name = name;
         }
     }
 }

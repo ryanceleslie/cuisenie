@@ -13,10 +13,7 @@ namespace Infrastructure.Data
     public class MealPlannerContext : DbContext
     {
         public MealPlannerContext(DbContextOptions<MealPlannerContext> options) : base(options) { }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder options)
-        //=> options.UseSqlServer(ConnectionStrings, x => x.MigrationsAssembly("MyApp.Migrations"));
-
+        
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Instruction> Instructions { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }

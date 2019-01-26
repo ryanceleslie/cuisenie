@@ -7,7 +7,7 @@ namespace Core.Entities.RecipeAggregate
 {
     public class Recipe : BaseEntity, IAggregateRoot
     {
-        public string Title { get; set; }
+        public string Name { get; set; }
         public int Servings { get; set; }
         public int Rating { get; set; }
         public TimeSpan Prep { get; set; }
@@ -26,11 +26,11 @@ namespace Core.Entities.RecipeAggregate
 
         }
 
-        public Recipe(string title, int servings, int rating, TimeSpan prep, TimeSpan cook, TimeSpan ready, string externalUrl, List<Ingredient> ingredients, List<Instruction> instructions) : this()
+        public Recipe(string name, int servings, int rating, TimeSpan prep, TimeSpan cook, TimeSpan ready, string externalUrl, List<Ingredient> ingredients, List<Instruction> instructions) : this()
         {
             Guard.Against.OutOfRange(rating, nameof(rating), 1, 5);
 
-            Title = title;
+            Name = name;
             Servings = servings;
             Rating = rating;
             Prep = prep;

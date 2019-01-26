@@ -4,18 +4,20 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(MealPlannerContext))]
-    partial class MealPlannerContextModelSnapshot : ModelSnapshot
+    [Migration("20190126144042_NutritionTypeUpdate")]
+    partial class NutritionTypeUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
+                .HasAnnotation("ProductVersion", "2.2.0-rtm-35687")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -147,8 +149,6 @@ namespace Infrastructure.Data.Migrations
 
                     b.Property<string>("ModifiedBy");
 
-                    b.Property<string>("Name");
-
                     b.Property<TimeSpan>("Prep");
 
                     b.Property<int>("Rating");
@@ -156,6 +156,8 @@ namespace Infrastructure.Data.Migrations
                     b.Property<TimeSpan>("Ready");
 
                     b.Property<int>("Servings");
+
+                    b.Property<string>("Title");
 
                     b.HasKey("Id");
 
