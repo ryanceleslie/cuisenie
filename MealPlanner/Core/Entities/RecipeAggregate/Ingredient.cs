@@ -11,7 +11,7 @@ namespace Core.Entities.RecipeAggregate
 
         // I think this belong here and not the Food type, this may change
         public int ServingSize { get; set; }
-        public Measurement Measurement { get; set; }
+        public Measurement Measurement { get; private set; }
 
         private readonly List<Nutrition> _nutrition = new List<Nutrition>();
         public IReadOnlyCollection<Nutrition> Nutrition => _nutrition.AsReadOnly();

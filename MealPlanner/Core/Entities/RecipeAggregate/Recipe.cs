@@ -26,10 +26,19 @@ namespace Core.Entities.RecipeAggregate
 
         }
 
-        public Recipe(int rating) : this()
+        public Recipe(string title, int servings, int rating, TimeSpan prep, TimeSpan cook, TimeSpan ready, string externalUrl, List<Ingredient> ingredients, List<Instruction> instructions) : this()
         {
             Guard.Against.OutOfRange(rating, nameof(rating), 1, 5);
+
+            Title = title;
+            Servings = servings;
             Rating = rating;
+            Prep = prep;
+            Cook = cook;
+            Ready = ready;
+            ExternalUrl = externalUrl;
+            _ingredients = ingredients;
+            _instructions = instructions;
         }
     }
 }

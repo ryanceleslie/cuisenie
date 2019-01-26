@@ -231,3 +231,6 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# remove from source control because of connection strings
+appsettings.Development.json
