@@ -44,6 +44,7 @@ namespace UnitTests.Utilities
         }
     }
 
+    [ExcludeFromCodeCoverage]
     internal class TestAsyncEnumerable<T> : EnumerableQuery<T>, IAsyncEnumerable<T>, IQueryable<T>
     {
         public TestAsyncEnumerable(IEnumerable<T> enumerable)
@@ -62,6 +63,7 @@ namespace UnitTests.Utilities
         }
     }
 
+    [ExcludeFromCodeCoverage]
     internal class TestAsyncEnumerator<T> : IAsyncEnumerator<T>
     {
         private readonly IEnumerator<T> _inner;

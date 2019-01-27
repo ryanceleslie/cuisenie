@@ -45,28 +45,24 @@ namespace Infrastructure.Data
         {
             return await ApplySpecification(spec).CountAsync();
         }
-
-        //TODO add test
+        
         public void Delete(T entity)
         {
             _context.Set<T>().Remove(entity);
             _context.SaveChanges();
         }
-
-        //TODO add test
+        
         public async Task DeleteAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();
         }
-
-        //TODO add test
+        
         public T GetById(int id)
         {
             return _context.Set<T>().Find(id);
         }
-
-        //TODO add test
+        
         public async Task<T> GetByIdAsync(int id)
         {
             return await _context.Set<T>().FindAsync(id);
