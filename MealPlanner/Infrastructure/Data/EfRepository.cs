@@ -17,8 +17,7 @@ namespace Infrastructure.Data
         {
             _context = context;
         }
-
-        //TODO add test
+        
         public T Add(T entity)
         {
             _context.Set<T>().Add(entity);
@@ -26,8 +25,7 @@ namespace Infrastructure.Data
 
             return entity;
         }
-
-        //TODO add test
+        
         public async Task<T> AddAsync(T entity)
         {
             _context.Set<T>().Add(entity);
@@ -117,8 +115,7 @@ namespace Infrastructure.Data
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
-
-        //TODO add test
+        
         private IQueryable<T> ApplySpecification(ISpecification<T> spec)
         {
             return SpecificationEvaluator<T>.GetQuery(_context.Set<T>().AsQueryable(), spec);
