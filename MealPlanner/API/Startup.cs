@@ -13,6 +13,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Infrastructure.Data;
+using Swashbuckle.AspNetCore.Swagger;
+using AutoMapper;
 
 namespace API
 {
@@ -32,6 +34,15 @@ namespace API
 
             services.AddDbContext<MealPlannerContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MealPlannerConnection")));
+
+            // AutoMapper dependcy injection
+            services.AddAutoMapper(typeof(Startup));
+
+            // Register the Swagger generator, defining one or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "MealPlannerAPI", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

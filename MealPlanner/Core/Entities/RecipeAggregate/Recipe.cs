@@ -21,13 +21,11 @@ namespace Core.Entities.RecipeAggregate
         private List<Instruction> _instructions = new List<Instruction>();
         public IEnumerable<Instruction> Instructions => _instructions;
 
-        public Recipe()
-        {
-
-        }
+        public Recipe() { }
 
         public Recipe(string name, int servings, int rating, TimeSpan prep, TimeSpan cook, TimeSpan ready, string externalUrl, List<Ingredient> ingredients, List<Instruction> instructions) : this()
         {
+            //TODO likely need to add more guards
             Guard.Against.OutOfRange(rating, nameof(rating), 1, 5);
 
             Name = name;
