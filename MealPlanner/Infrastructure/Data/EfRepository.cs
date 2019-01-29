@@ -33,14 +33,12 @@ namespace Infrastructure.Data
 
             return entity;
         }
-
-        //TODO add test
+        
         public int Count(ISpecification<T> spec)
         {
             return ApplySpecification(spec).Count();
         }
-
-        //TODO add test
+        
         public async Task<int> CountAsync(ISpecification<T> spec)
         {
             return await ApplySpecification(spec).CountAsync();
@@ -73,42 +71,38 @@ namespace Infrastructure.Data
         {
             return List(spec).FirstOrDefault();
         }
-
-        //TODO add test
+        
         public IEnumerable<T> List(ISpecification<T> spec)
         {
             return ApplySpecification(spec).AsEnumerable();
         }
-
-        //TODO add test
-        public IEnumerable<T> ListAll()
-        {
-            return _context.Set<T>().AsEnumerable();
-        }
-
-        //TODO add test
-        public async Task<IReadOnlyList<T>> ListAllAsync()
-        {
-            return await _context.Set<T>().ToListAsync();
-        }
-
-        //TODO add test
+        
         public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
         {
             return await ApplySpecification(spec).ToListAsync();
         }
-
-        //TODO add test
+        
+        public IEnumerable<T> ListAll()
+        {
+            return _context.Set<T>().AsEnumerable();
+        }
+        
+        public async Task<IReadOnlyList<T>> ListAllAsync()
+        {
+            return await _context.Set<T>().ToListAsync();
+        }
+        
         public void Update(T entity)
         {
-            _context.Entry(entity).State = EntityState.Modified;
+            _context.Set<T>().Update(entity);
+            //_context.Entry(entity).State = EntityState.Modified; this causes tests to fail because there's a null object, I think I'm not setting up something correctly
             _context.SaveChanges();
         }
-
-        //TODO add test
+        
         public async Task UpdateAsync(T entity)
         {
-            _context.Entry(entity).State = EntityState.Modified;
+            _context.Set<T>().Update(entity);
+            //_context.Entry(entity).State = EntityState.Modified; this causes tests to fail because there's a null object, I think I'm not setting up something correctly
             await _context.SaveChangesAsync();
         }
         

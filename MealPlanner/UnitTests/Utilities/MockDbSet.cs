@@ -13,6 +13,7 @@ namespace UnitTests.Utilities
     public class MockDbSet<T> where T : class
     {
         public DbSet<T> Object { get; }
+        public Mock<DbSet<T>> MockObject { get; }
 
         public MockDbSet(IEnumerable<T> list)
         {
@@ -31,6 +32,7 @@ namespace UnitTests.Utilities
             mockDbSet.As<IQueryable<T>>().Setup(x => x.ElementType).Returns(queryableList.ElementType);
             mockDbSet.As<IQueryable<T>>().Setup(x => x.GetEnumerator()).Returns(queryableList.GetEnumerator());
             Object = mockDbSet.Object;
+            MockObject = mockDbSet;
         }
     }
 }
