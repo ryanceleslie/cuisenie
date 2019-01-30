@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using UnitTests.Builders;
+using System.Collections.ObjectModel;
 
 namespace UnitTests.Core.Services
 {
@@ -29,7 +30,7 @@ namespace UnitTests.Core.Services
         #region New
 
         [Fact]
-        public async Task New_Recipe_ReturnsNothing()
+        public async Task New_Recipe_Returns_Nothing()
         {
             // Arrange
             var mockRecipe = _recipe;
@@ -46,15 +47,83 @@ namespace UnitTests.Core.Services
         #endregion
 
         #region Edit
+
+        [Fact]
+        public async Task Edit_Recipe_Returns_Nothing()
+        {
+            // Arrage
+            _recipe.ModifiedBy = "differentUser";
+            var mockRecipe = _recipe;
+            _repository.Setup(r => r.GetById(It.IsAny<int>()))
+                .Returns(Task.FromResult(mockRecipe));
+
+            // Act
+            await _service.Edit(mockRecipe);
+
+            // Assert
+            _repository.Verify(x => x.Update(It.Is<Recipe>(y => y == mockRecipe)));
+        }
+
         #endregion
 
         #region Remove
+
+        [Fact]
+        public async Task Remove_Recipe_Returns_Nothing()
+        {
+            // Arrange
+            var mockRecipe = _recipe;
+            _repository.Setup(r => r.GetById(It.IsAny<int>()))
+                .Returns(Task.FromResult(mockRecipe));
+
+            // Act
+            await _service.Remove(mockRecipe);
+
+            // Assert
+            _repository.Verify(x => x.Delete(It.Is<Recipe>(y => y == mockRecipe)));
+        }
+
         #endregion
 
         #region Get
+
+        [Fact]
+        public async Task Get_By_Id_Returns_Type_And_Recipe()
+        {
+            // Arrange
+            var id = 1;
+            var mockRecipe = _recipe;
+            _repository.Setup(r => r.GetById(It.IsAny<int>()))
+                .Returns(Task.FromResult(mockRecipe));
+
+            // Act
+            var act = await _service.Get(id);
+
+            // Assert
+            act.Should().BeOfType<Recipe>().And.BeEquivalentTo(mockRecipe);
+        }
+
         #endregion
 
         #region GetAll
+
+        [Fact]
+        public async Task GetAll_Returns_Recipes()
+        {
+            // Arrange
+            var mockRecipes = new List<Recipe>() { _recipe };
+            IReadOnlyList<Recipe> readOnlyList = mockRecipes;
+
+            _repository.Setup(r => r.ListAll())
+                .Returns(Task.FromResult(readOnlyList));
+
+            // Act
+            var act = await _service.GetAll();
+
+            // Assert
+            act.Should().BeEquivalentTo(mockRecipes);
+        }
+
         #endregion
     }
 }

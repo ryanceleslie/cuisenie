@@ -13,6 +13,6 @@ namespace Core.Interfaces
         Task Edit(Recipe recipe);
         Task Remove(Recipe recipe);
         Task<Recipe> Get(int id);
-        Task<IEnumerable<Recipe>> GetAll();
+        Task<IReadOnlyList<Recipe>> GetAll();
     }
 }

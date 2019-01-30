@@ -42,7 +42,8 @@ namespace UnitTests.Infrastructure.Data
         {
             // Arrange
             var mockEntity = _entity;
-            _dbSet.MockObject.Setup(x => x.AddAsync(It.IsAny<BaseEntity>(), default(System.Threading.CancellationToken))).ReturnsAsync(mockEntity.As<EntityEntry<BaseEntity>>);
+            _dbSet.MockObject.Setup(x => x.AddAsync(It.IsAny<BaseEntity>(), default(System.Threading.CancellationToken)))
+                .ReturnsAsync(mockEntity.As<EntityEntry<BaseEntity>>);
 
             // Act
             var act = await _repository.Add(mockEntity);
@@ -60,7 +61,8 @@ namespace UnitTests.Infrastructure.Data
             // Arrange
             _entity.ModifiedBy = "differentUser";
             var mockEntity = _entity;
-            _dbSet.MockObject.Setup(x => x.Update(It.IsAny<BaseEntity>())).Returns(mockEntity.As<EntityEntry<BaseEntity>>);
+            _dbSet.MockObject.Setup(x => x.Update(It.IsAny<BaseEntity>()))
+                .Returns(mockEntity.As<EntityEntry<BaseEntity>>);
 
             // Act
             await _repository.Update(mockEntity);
@@ -78,7 +80,8 @@ namespace UnitTests.Infrastructure.Data
         {
             // Arrange
             var mockEntity = _entity;
-            _dbSet.MockObject.Setup(x => x.Remove(It.IsAny<BaseEntity>())).Returns(mockEntity.As<EntityEntry<BaseEntity>>);
+            _dbSet.MockObject.Setup(x => x.Remove(It.IsAny<BaseEntity>()))
+                .Returns(mockEntity.As<EntityEntry<BaseEntity>>);
 
             // Act
             await _repository.Delete(mockEntity);

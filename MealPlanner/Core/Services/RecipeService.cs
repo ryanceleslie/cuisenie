@@ -47,10 +47,10 @@ namespace Core.Services
             return await _repository.GetById(id);
         }
 
-        public async Task<IEnumerable<Recipe>> GetAll()
+        public async Task<IReadOnlyList<Recipe>> GetAll()
         {
             _logger.Information("Core.Services.RecipeService: GetAll()");
-
+            
             return await _repository.ListAll();
         }
     }
