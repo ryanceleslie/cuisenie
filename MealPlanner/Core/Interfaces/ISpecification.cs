@@ -11,8 +11,7 @@ namespace Core.Interfaces
         List<string> IncludeStrings { get; }
         Expression<Func<T, object>> OrderBy { get; }
         Expression<Func<T, object>> OrderByDescending { get; }
-
-        //TODO do I need Take and Skip?
+        
         int Take { get; }
         int Skip { get; }
         bool isPagingEnabled { get; }
