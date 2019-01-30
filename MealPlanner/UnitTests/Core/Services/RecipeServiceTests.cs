@@ -9,6 +9,7 @@ using FluentAssertions;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using UnitTests.Builders;
 
 namespace UnitTests.Core.Services
 {
@@ -20,7 +21,7 @@ namespace UnitTests.Core.Services
 
         public RecipeServiceTests()
         {
-            _recipe = new Recipe(); //TODO add recipe builder
+            _recipe = new RecipeBuilder().WithDefaultValues(); //TODO add recipe builder
             _repository = new Mock<IRepository<Recipe>>();
             _service = new RecipeService(_repository.Object, new Mock<IAppLogger<Recipe>>().Object);
         }

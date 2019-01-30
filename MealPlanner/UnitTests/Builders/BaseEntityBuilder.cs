@@ -1,10 +1,5 @@
 ﻿using Core.Entities;
 using Core.Specifications;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnitTests.Builders
 {
@@ -23,7 +18,13 @@ namespace UnitTests.Builders
 
         public BaseEntity WithDefaultValues()
         {
-            _entity = new BaseEntity() { Id = TestId, CreatedBy = TestCreatedBy, ModifiedBy = TestModifiedBy };
+            _entity = new BaseEntity()
+            {
+                Id = TestId,
+                CreatedBy = TestCreatedBy,
+                ModifiedBy = TestModifiedBy
+            };
+
             return _entity;
         }
     }
