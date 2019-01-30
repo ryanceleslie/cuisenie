@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-using Core.Entities;
+﻿using Core.Entities;
 using Core.Interfaces;
+using Core.Specifications;
+using FluentAssertions;
+using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Moq;
-using FluentAssertions;
-using UnitTests.Utilities;
-using Infrastructure.Data;
-using Core.Specifications;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using UnitTests.Builders;
-using System.Linq.Expressions;
+using UnitTests.Utilities;
+using Xunit;
 
 namespace UnitTests.Infrastructure.Data
 {
     public class RepositoryTests
     {
+        //TODO change all these to readonly and not properties? Research this
         private Mock<MealPlannerContext> _context { get; set; }
         private IRepository<BaseEntity> _repository { get; set; }
         private BaseEntity _entity { get; set; }

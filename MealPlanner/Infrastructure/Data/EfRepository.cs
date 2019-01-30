@@ -36,7 +36,7 @@ namespace Infrastructure.Data
             _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();
         }
-        
+
         public async Task<T> GetById(int id)
         {
             return await _context.Set<T>().FindAsync(id);
