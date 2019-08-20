@@ -10,6 +10,7 @@ namespace Core.Entities.RecipeAggregate
         public string Name { get; set; }
         public int Servings { get; set; }
         public int Rating { get; set; }
+        public TimeSpan Frequency { get; set; }
         public TimeSpan Prep { get; set; }
         public TimeSpan Cook { get; set; }
         public TimeSpan Ready { get; set; }
