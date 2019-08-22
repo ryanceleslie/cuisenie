@@ -11,6 +11,8 @@ namespace Core.Entities.SuggestionAggregate
         public TimeSpan Frequency { get; set; }
         public string User { get; set; }
 
+        public RecipePreference() { }
+
         public RecipePreference(Recipe recipe, int rating, TimeSpan frequency, string user)
         {
             Guard.Against.OutOfRange(rating, nameof(rating), 1, 5);
