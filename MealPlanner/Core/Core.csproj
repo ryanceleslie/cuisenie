@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Entities\RestaurantAggregate\" />
+    <Folder Include="Entities\SuggestionAggregate\" />
     <Folder Include="Exceptions\" />
   </ItemGroup>
 
