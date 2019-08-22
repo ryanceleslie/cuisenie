@@ -17,7 +17,6 @@ namespace UnitTests.Builders
         public string TestModifiedBy => "modifiedByUser";
         public string TestName => "Test Recipe";
         public int TestServings => 5;
-        public int TestRating => 4;
         public TimeSpan TestPrep => TimeSpan.FromMinutes(15);
         public TimeSpan TestCook => TimeSpan.FromMinutes(30);
         public TimeSpan TestReady => TimeSpan.FromMinutes(60);
@@ -37,7 +36,6 @@ namespace UnitTests.Builders
                 ModifiedBy = TestModifiedBy,
                 Name = TestName,
                 Servings = TestServings,
-                Rating = TestRating,
                 Prep = TestPrep,
                 Cook = TestCook,
                 Ready = TestReady,
