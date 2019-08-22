@@ -9,7 +9,6 @@ namespace Core.Entities.RecipeAggregate
     {
         public string Name { get; set; }
         public int Servings { get; set; }
-        public int Rating { get; set; }
         public TimeSpan Prep { get; set; }
         public TimeSpan Cook { get; set; }
         public TimeSpan Ready { get; set; }
@@ -21,18 +20,14 @@ namespace Core.Entities.RecipeAggregate
         private List<Instruction> _instructions = new List<Instruction>();
         public IEnumerable<Instruction> Instructions => _instructions;
 
-        public Recipe()
-        {
+        public Recipe() { }
 
-        }
-
-        public Recipe(string name, int servings, int rating, TimeSpan prep, TimeSpan cook, TimeSpan ready, string externalUrl, List<Ingredient> ingredients, List<Instruction> instructions) : this()
+        public Recipe(string name, int servings, TimeSpan prep, TimeSpan cook, TimeSpan ready, string externalUrl, List<Ingredient> ingredients, List<Instruction> instructions) : this()
         {
-            Guard.Against.OutOfRange(rating, nameof(rating), 1, 5);
+            //TODO likely need to add more guards
 
             Name = name;
             Servings = servings;
-            Rating = rating;
             Prep = prep;
             Cook = cook;
             Ready = ready;
