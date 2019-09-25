@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Core.Entities;
 using Core.Entities.RecipeAggregate;
+using Core.Entities.SuggestionAggregate;
 
 namespace Infrastructure.Data
 {
@@ -29,6 +30,7 @@ namespace Infrastructure.Data
             builder.Entity<Recipe>(ConfigureRecipe);
             builder.Entity<Ingredient>(ConfigureIngredient);
             builder.Entity<Nutrition>(ConfigureNutrition);
+            builder.Entity<RecipePreference>(ConfigureRecipePreference);
         }
 
         private void ConfigureRecipe(EntityTypeBuilder<Recipe> builder)
@@ -49,6 +51,11 @@ namespace Infrastructure.Data
         {
             builder.OwnsOne(t => t.Type);
             builder.OwnsOne(m => m.Measurement);
+        }
+
+        private void ConfigureRecipePreference(EntityTypeBuilder<RecipePreference> builder)
+        {
+
         }
     }
 }
