@@ -14,10 +14,11 @@ namespace Infrastructure.Data
     public class MealPlannerContext : DbContext
     {
         public MealPlannerContext(DbContextOptions<MealPlannerContext> options) : base(options) { }
-        
+
         public DbSet<Recipe> Recipes { get; set; }
-        public DbSet<Instruction> Instructions { get; set; }
+        public DbSet<Equipment> Equipment { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Instruction> Instructions { get; set; }
         public DbSet<Food> Food { get; set; }
         public DbSet<Nutrition> Nutrition { get; set; }
 
@@ -35,9 +36,11 @@ namespace Infrastructure.Data
 
         private void ConfigureRecipe(EntityTypeBuilder<Recipe> builder)
         {
+            var equipmentNavigation = builder.Metadata.FindNavigation(nameof(Recipe.Equipment));
             var ingredientsNavigation = builder.Metadata.FindNavigation(nameof(Recipe.Ingredients));
             var instructionsNavigation = builder.Metadata.FindNavigation(nameof(Recipe.Instructions));
 
+            equipmentNavigation.SetPropertyAccessMode(PropertyAccessMode.Field);
             ingredientsNavigation.SetPropertyAccessMode(PropertyAccessMode.Field);
             instructionsNavigation.SetPropertyAccessMode(PropertyAccessMode.Field);
         }
