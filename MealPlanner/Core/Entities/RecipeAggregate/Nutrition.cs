@@ -4,6 +4,6 @@
     {
         public NutritionType Type { get; private set; }
         public Measurement Measurement { get; private set; }
-        public int Value { get; set; }
+        public decimal Value { get; set; }
     }
 }

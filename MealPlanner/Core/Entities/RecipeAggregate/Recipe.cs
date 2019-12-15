@@ -14,6 +14,9 @@ namespace Core.Entities.RecipeAggregate
         public TimeSpan Ready { get; set; }
         public string ExternalUrl { get; set; }
 
+        private List<Equipment> _equipment = new List<Equipment>();
+        public IEnumerable<Equipment> Equipment => _equipment;
+
         private List<Ingredient> _ingredients = new List<Ingredient>();
         public IEnumerable<Ingredient> Ingredients => _ingredients;
 
@@ -22,7 +25,7 @@ namespace Core.Entities.RecipeAggregate
 
         public Recipe() { }
 
-        public Recipe(string name, int servings, TimeSpan prep, TimeSpan cook, TimeSpan ready, string externalUrl, List<Ingredient> ingredients, List<Instruction> instructions) : this()
+        public Recipe(string name, int servings, TimeSpan prep, TimeSpan cook, TimeSpan ready, string externalUrl, List<Equipment> equipment, List<Ingredient> ingredients, List<Instruction> instructions) : this()
         {
             //TODO likely need to add more guards
 
@@ -32,6 +35,7 @@ namespace Core.Entities.RecipeAggregate
             Cook = cook;
             Ready = ready;
             ExternalUrl = externalUrl;
+            _equipment = equipment;
             _ingredients = ingredients;
             _instructions = instructions;
         }

@@ -5,7 +5,7 @@ namespace Core.Entities.RecipeAggregate
 {
     public class Ingredient : BaseEntity
     {
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
         public Food Food { get; set; }
         public string Description { get; set; }
 
