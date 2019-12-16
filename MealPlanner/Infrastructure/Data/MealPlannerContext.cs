@@ -48,12 +48,14 @@ namespace Infrastructure.Data
         private void ConfigureIngredient(EntityTypeBuilder<Ingredient> builder)
         {
             builder.OwnsOne(m => m.Measurement);
+            builder.Property(p => p.Quantity).HasColumnType("decimal(18,2)");
         }
 
         private void ConfigureNutrition(EntityTypeBuilder<Nutrition> builder)
         {
             builder.OwnsOne(t => t.Type);
             builder.OwnsOne(m => m.Measurement);
+            builder.Property(p => p.Value).HasColumnType("decimal(18,2)");
         }
 
         private void ConfigureRecipePreference(EntityTypeBuilder<RecipePreference> builder)
