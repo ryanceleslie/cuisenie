@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\Migrations\20191216052130_DecimalPrecisionUpdates.cs" />
-    <Compile Remove="Data\Migrations\20191216052130_DecimalPrecisionUpdates.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Identity\" />
   </ItemGroup>
 
