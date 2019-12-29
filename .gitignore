@@ -263,3 +263,4 @@ __pycache__/
 # remove from source control because of connection strings
 appsettings.Development.json
 appsettings.Production.json
+**/azurekeyvault.json

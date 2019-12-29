@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,8 +28,7 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = Configuration.GetConnectionString("MealPlannerConnection");
-            services.AddDbContext<MealPlannerContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<MealPlannerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MealPlannerConnection")));
 
             services.AddControllers();
         }
