@@ -39,10 +39,12 @@ namespace Infrastructure.Data
             var equipmentNavigation = builder.Metadata.FindNavigation(nameof(Recipe.Equipment));
             var ingredientsNavigation = builder.Metadata.FindNavigation(nameof(Recipe.Ingredients));
             var instructionsNavigation = builder.Metadata.FindNavigation(nameof(Recipe.Instructions));
+            var relatedRecipesNavigation = builder.Metadata.FindNavigation(nameof(Recipe.RelatedRecipes));
 
             equipmentNavigation.SetPropertyAccessMode(PropertyAccessMode.Field);
             ingredientsNavigation.SetPropertyAccessMode(PropertyAccessMode.Field);
             instructionsNavigation.SetPropertyAccessMode(PropertyAccessMode.Field);
+            relatedRecipesNavigation.SetPropertyAccessMode(PropertyAccessMode.Field);
         }
 
         private void ConfigureIngredient(EntityTypeBuilder<Ingredient> builder)
