@@ -21,6 +21,7 @@ namespace Infrastructure.Data
         public DbSet<Instruction> Instructions { get; set; }
         public DbSet<Food> Food { get; set; }
         public DbSet<Nutrition> Nutrition { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         // Can't create DbSets of owned types
         //public DbSet<NutritionType> NutritionTypes { get; set; }
@@ -32,6 +33,33 @@ namespace Infrastructure.Data
             builder.Entity<Ingredient>(ConfigureIngredient);
             builder.Entity<Nutrition>(ConfigureNutrition);
             builder.Entity<RecipePreference>(ConfigureRecipePreference);
+
+            // Joiner tables
+            builder.Entity<RecipeCategory>(ConfigureRecipeCategory);
+            builder.Entity<RelatedRecipes>(ConfigureRelatedRecipes);
+        }
+
+        private void ConfigureRelatedRecipes(EntityTypeBuilder<RelatedRecipes> builder)
+        {
+            builder.HasKey(rr => new { rr.ParentRecipeId, rr.ChildRecipeId });
+
+            builder.HasOne(rr => rr.ParentRecipe)
+                .WithMany(r => r.RelatedRecipes)
+                .HasForeignKey(rr => rr.ParentRecipeId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
+
+        private void ConfigureRecipeCategory(EntityTypeBuilder<RecipeCategory> builder)
+        {
+            builder.HasKey(rc => new { rc.RecipeId, rc.CategoryId });
+
+            builder.HasOne(rc => rc.Recipe)
+                .WithMany(r => r.Categories)
+                .HasForeignKey(rc => rc.RecipeId);
+
+            builder.HasOne(rc => rc.Category)
+                .WithMany(c => c.Recipes)
+                .HasForeignKey(rc => rc.CategoryId);
         }
 
         private void ConfigureRecipe(EntityTypeBuilder<Recipe> builder)
@@ -39,12 +67,10 @@ namespace Infrastructure.Data
             var equipmentNavigation = builder.Metadata.FindNavigation(nameof(Recipe.Equipment));
             var ingredientsNavigation = builder.Metadata.FindNavigation(nameof(Recipe.Ingredients));
             var instructionsNavigation = builder.Metadata.FindNavigation(nameof(Recipe.Instructions));
-            var relatedRecipesNavigation = builder.Metadata.FindNavigation(nameof(Recipe.RelatedRecipes));
 
             equipmentNavigation.SetPropertyAccessMode(PropertyAccessMode.Field);
             ingredientsNavigation.SetPropertyAccessMode(PropertyAccessMode.Field);
             instructionsNavigation.SetPropertyAccessMode(PropertyAccessMode.Field);
-            relatedRecipesNavigation.SetPropertyAccessMode(PropertyAccessMode.Field);
         }
 
         private void ConfigureIngredient(EntityTypeBuilder<Ingredient> builder)
