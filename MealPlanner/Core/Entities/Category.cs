@@ -9,13 +9,13 @@ namespace Core.Entities
     {
         public string Title { get; set; }
 
-        private List<RecipeCategory> _relatedRecipes { get; set; }
-        public IEnumerable<RecipeCategory> RelatedRecipes => _relatedRecipes;
+        private List<RecipeCategory> _recipes { get; set; }
+        public IEnumerable<RecipeCategory> Recipes => _recipes;
         public Category() { }
 
         public Category(List<RecipeCategory> relatedRecipes)
         {
-            _relatedRecipes = relatedRecipes;
+            _recipes = relatedRecipes;
         }
     }
 }

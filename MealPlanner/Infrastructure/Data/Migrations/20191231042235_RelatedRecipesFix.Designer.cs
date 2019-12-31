@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(MealPlannerContext))]
-    [Migration("20191231035301_CreateRecipeCategoriesTable")]
-    partial class CreateRecipeCategoriesTable
+    [Migration("20191231042235_RelatedRecipesFix")]
+    partial class RelatedRecipesFix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,15 +40,10 @@ namespace Infrastructure.Data.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RecipeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RecipeId");
 
                     b.ToTable("Categories");
                 });
@@ -285,6 +280,21 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("RecipeCategories");
                 });
 
+            modelBuilder.Entity("Core.Entities.RecipeAggregate.RelatedRecipes", b =>
+                {
+                    b.Property<int>("ParentRecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ChildRecipeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ParentRecipeId", "ChildRecipeId");
+
+                    b.HasIndex("ChildRecipeId");
+
+                    b.ToTable("RelatedRecipes");
+                });
+
             modelBuilder.Entity("Core.Entities.SuggestionAggregate.RecipePreference", b =>
                 {
                     b.Property<int>("Id")
@@ -321,13 +331,6 @@ namespace Infrastructure.Data.Migrations
                     b.HasIndex("RecipeId");
 
                     b.ToTable("RecipePreference");
-                });
-
-            modelBuilder.Entity("Core.Entities.Category", b =>
-                {
-                    b.HasOne("Core.Entities.RecipeAggregate.Recipe", null)
-                        .WithMany("Categories")
-                        .HasForeignKey("RecipeId");
                 });
 
             modelBuilder.Entity("Core.Entities.RecipeAggregate.Equipment", b =>
@@ -419,15 +422,30 @@ namespace Infrastructure.Data.Migrations
             modelBuilder.Entity("Core.Entities.RecipeAggregate.RecipeCategory", b =>
                 {
                     b.HasOne("Core.Entities.Category", "Category")
-                        .WithMany("RelatedRecipes")
+                        .WithMany("Recipes")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Entities.RecipeAggregate.Recipe", "Recipe")
-                        .WithMany("RelatedRecipes")
+                        .WithMany("Categories")
                         .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Core.Entities.RecipeAggregate.RelatedRecipes", b =>
+                {
+                    b.HasOne("Core.Entities.RecipeAggregate.Recipe", "ChildRecipe")
+                        .WithMany()
+                        .HasForeignKey("ChildRecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Entities.RecipeAggregate.Recipe", "ParentRecipe")
+                        .WithMany("RelatedRecipes")
+                        .HasForeignKey("ParentRecipeId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 

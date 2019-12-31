@@ -7,18 +7,6 @@ namespace Infrastructure.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Recipes_Recipes_RecipeId",
-                table: "Recipes");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Recipes_RecipeId",
-                table: "Recipes");
-
-            migrationBuilder.DropColumn(
-                name: "RecipeId",
-                table: "Recipes");
-
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
@@ -29,18 +17,11 @@ namespace Infrastructure.Data.Migrations
                     CreatedBy = table.Column<string>(nullable: true),
                     Modified = table.Column<DateTime>(nullable: false),
                     ModifiedBy = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
-                    RecipeId = table.Column<int>(nullable: true)
+                    Title = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Categories_Recipes_RecipeId",
-                        column: x => x.RecipeId,
-                        principalTable: "Recipes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -68,11 +49,6 @@ namespace Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_RecipeId",
-                table: "Categories",
-                column: "RecipeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_RecipeCategories_CategoryId",
                 table: "RecipeCategories",
                 column: "CategoryId");
@@ -85,25 +61,6 @@ namespace Infrastructure.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
-
-            migrationBuilder.AddColumn<int>(
-                name: "RecipeId",
-                table: "Recipes",
-                type: "int",
-                nullable: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Recipes_RecipeId",
-                table: "Recipes",
-                column: "RecipeId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Recipes_Recipes_RecipeId",
-                table: "Recipes",
-                column: "RecipeId",
-                principalTable: "Recipes",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
         }
     }
 }
