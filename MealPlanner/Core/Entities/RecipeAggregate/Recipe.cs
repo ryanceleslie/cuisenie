@@ -26,8 +26,8 @@ namespace Core.Entities.RecipeAggregate
         private List<RecipeCategory> _categories = new List<RecipeCategory>();
         public IEnumerable<RecipeCategory> Categories => _categories;
 
-        private List<RelatedRecipes> _relatedRecipes = new List<RelatedRecipes>();
-        public IEnumerable<RelatedRecipes> RelatedRecipes => _relatedRecipes;
+        private List<RelatedRecipe> _relatedRecipes = new List<RelatedRecipe>();
+        public IEnumerable<RelatedRecipe> RelatedRecipes => _relatedRecipes;
 
 
         public Recipe() { }
@@ -43,7 +43,7 @@ namespace Core.Entities.RecipeAggregate
             List<Ingredient> ingredients,
             List<Instruction> instructions,
             List<RecipeCategory> categories,
-            List<RelatedRecipes> relatedRecipes) : this()
+            List<RelatedRecipe> relatedRecipes) : this()
         {
             //TODO likely need to add more guards
 

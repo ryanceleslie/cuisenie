@@ -3,7 +3,7 @@
 namespace Core.Entities.RecipeAggregate
 {
     [Table("RelatedRecipes")]
-    public class RelatedRecipes
+    public class RelatedRecipe
     {
         public int ParentRecipeId { get; set; }
         public Recipe ParentRecipe { get; set; }

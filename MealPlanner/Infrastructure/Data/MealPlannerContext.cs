@@ -36,10 +36,10 @@ namespace Infrastructure.Data
 
             // Joiner tables
             builder.Entity<RecipeCategory>(ConfigureRecipeCategory);
-            builder.Entity<RelatedRecipes>(ConfigureRelatedRecipes);
+            builder.Entity<RelatedRecipe>(ConfigureRelatedRecipe);
         }
 
-        private void ConfigureRelatedRecipes(EntityTypeBuilder<RelatedRecipes> builder)
+        private void ConfigureRelatedRecipe(EntityTypeBuilder<RelatedRecipe> builder)
         {
             builder.HasKey(rr => new { rr.ParentRecipeId, rr.ChildRecipeId });
 
