@@ -1,12 +1,10 @@
 ﻿using API;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 using System.Net.Http;
-using Newtonsoft.Json;
+using FluentAssertions;
 using Core.Entities.RecipeAggregate;
 
 namespace L2.API.Controllers
@@ -26,17 +24,15 @@ namespace L2.API.Controllers
         [Fact]
         public async Task Get_Recipes()
         {
-            // Arrange
+            // Act
             var response = await Client.GetAsync("/recipe");
             response.EnsureSuccessStatusCode();
-            var tempasdas = await response.Content.ReadAsStringAsync();
-            var model = JsonConvert.DeserializeObject<Recipe>(await response.Content.ReadAsStringAsync());
+            var stringResponse = await response.Content.ReadAsStreamAsync();
 
-            var temp = model;
+            var act = await JsonSerializer.DeserializeAsync<IEnumerable<Recipe>>(stringResponse);
 
-            // Act
-
-            // Assert 
+            // Assert
+            act.Should().BeOfType<List<Recipe>>();
         }
 
         #endregion

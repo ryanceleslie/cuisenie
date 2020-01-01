@@ -1,16 +1,12 @@
 ﻿using Core.Entities.RecipeAggregate;
 using Core.Interfaces;
 using Core.Services;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using FluentAssertions;
-using System.Text;
+using Moq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Xunit;
 using UnitTests.Builders;
-using System.Collections.ObjectModel;
+using Xunit;
 
 namespace UnitTests.Core.Services
 {
