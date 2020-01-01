@@ -58,7 +58,7 @@ namespace API.Controllers
 
         // POST: Recipe/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put (int id, Recipe recipe)
+        public async Task<ActionResult> Put(int id, Recipe recipe)
         {
             try
             {
