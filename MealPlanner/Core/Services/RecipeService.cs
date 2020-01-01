@@ -50,10 +50,8 @@ namespace Core.Services
         public async Task<IReadOnlyList<Recipe>> GetAll()
         {
             _logger.Information("Core.Services.RecipeService: GetAll()");
-            
+
             return await _repository.ListAll();
         }
-
-        //TODO add more repo calls based on Specializations?
     }
 }
