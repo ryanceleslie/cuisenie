@@ -6,9 +6,9 @@ using Core.Entities.SuggestionAggregate;
 
 namespace Infrastructure.Data
 {
-    public class MealPlannerContext : DbContext
+    public class CuisenieContext : DbContext
     {
-        public MealPlannerContext(DbContextOptions<MealPlannerContext> options) : base(options) { }
+        public CuisenieContext(DbContextOptions<CuisenieContext> options) : base(options) { }
 
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Equipment> Equipment { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace Infrastructure.Data
 {
-    public class MealPlannerContextSeed
+    public class CuisenieContextSeed
     {
         //TODO add seed data
     }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(MealPlannerContext))]
+    [DbContext(typeof(CuisenieContext))]
     [Migration("20191231040256_CreateRecipeCategoriesTable")]
     partial class CreateRecipeCategoriesTable
     {
