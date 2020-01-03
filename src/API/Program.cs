@@ -27,7 +27,7 @@ namespace API
                             azureServiceTokenProvider.KeyVaultTokenCallback));
 
                     config.AddAzureKeyVault(
-                        $"https://{builtConfig["azureKeyVault:vault"]}.vault.azure.net/",
+                        $"https://{builtConfig["azureKeyVault:name"]}.vault.azure.net/",
                         keyVaultClient,
                         new DefaultKeyVaultSecretManager());
                 })
