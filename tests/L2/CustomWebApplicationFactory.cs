@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Infrastructure.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
+using Core.Interfaces;
+using System;
 
 namespace L2
 {
@@ -40,30 +42,21 @@ namespace L2
                 {
                     var scopedServices = scope.ServiceProvider;
                     var db = scopedServices.GetRequiredService<CuisenieContext>();
-                    var loggerFactory = scopedServices.GetRequiredService<ILoggerFactory>();
-
-                    var logger = scopedServices
-                        .GetRequiredService<ILogger<CustomWebApplicationFactory<TStartup>>>();
+                    var logger = scopedServices.GetRequiredService<IAppLogger<CuisenieContextSeed>>();
 
                     // Ensure the database is created.
                     db.Database.EnsureCreated();
 
                     //TODO eventually I do want to seed the DB with data
-                    //try
-                    //{
-                    //    // Seed the database with test data.
-                    //    CatalogContextSeed.SeedAsync(db, loggerFactory).Wait();
-
-                    //    // seed sample user data
-                    //    var userManager = scopedServices.GetRequiredService<UserManager<ApplicationUser>>();
-                    //    var roleManager = scopedServices.GetRequiredService<RoleManager<IdentityRole>>();
-                    //    AppIdentityDbContextSeed.SeedAsync(userManager, roleManager).Wait();
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    logger.LogError(ex, $"An error occurred seeding the " +
-                    //        "database with test messages. Error: {ex.Message}");
-                    //}
+                    try
+                    {
+                        // Seed the database with test data.
+                        CuisenieContextSeed.SeedAsync(db, logger).Wait();
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex, ex.Message);
+                    }
                 }
             });
         }
