@@ -13,8 +13,8 @@ namespace Core.Entities.RecipeAggregate
         public TimeSpan Ready { get; set; }
         public string ExternalUrl { get; set; }
 
-        private List<Equipment> _equipment = new List<Equipment>();
-        public IEnumerable<Equipment> Equipment => _equipment;
+        private List<RecipeEquipment> _equipment = new List<RecipeEquipment>();
+        public IEnumerable<RecipeEquipment> Equipment => _equipment;
 
         private List<Ingredient> _ingredients = new List<Ingredient>();
         public IEnumerable<Ingredient> Ingredients => _ingredients;
@@ -38,7 +38,7 @@ namespace Core.Entities.RecipeAggregate
             TimeSpan cook,
             TimeSpan ready,
             string externalUrl,
-            List<Equipment> equipment,
+            List<RecipeEquipment> equipment,
             List<Ingredient> ingredients,
             List<Instruction> instructions,
             List<RecipeCategory> categories,

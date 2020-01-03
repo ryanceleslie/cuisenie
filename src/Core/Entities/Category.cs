@@ -13,9 +13,9 @@ namespace Core.Entities
         public IEnumerable<RecipeCategory> Recipes => _recipes;
         public Category() { }
 
-        public Category(List<RecipeCategory> relatedRecipes)
+        public Category(List<RecipeCategory> recipes)
         {
-            _recipes = relatedRecipes;
+            _recipes = recipes;
         }
     }
 }

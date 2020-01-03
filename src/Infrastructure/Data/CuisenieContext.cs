@@ -31,17 +31,8 @@ namespace Infrastructure.Data
 
             // Joiner tables
             builder.Entity<RecipeCategory>(ConfigureRecipeCategory);
+            builder.Entity<RecipeEquipment>(ConfigureRecipeEquipment);
             builder.Entity<RelatedRecipe>(ConfigureRelatedRecipe);
-        }
-
-        private void ConfigureRelatedRecipe(EntityTypeBuilder<RelatedRecipe> builder)
-        {
-            builder.HasKey(rr => new { rr.ParentRecipeId, rr.ChildRecipeId });
-
-            builder.HasOne(rr => rr.ParentRecipe)
-                .WithMany(r => r.RelatedRecipes)
-                .HasForeignKey(rr => rr.ParentRecipeId)
-                .OnDelete(DeleteBehavior.Restrict);
         }
 
         private void ConfigureRecipeCategory(EntityTypeBuilder<RecipeCategory> builder)
@@ -55,6 +46,29 @@ namespace Infrastructure.Data
             builder.HasOne(rc => rc.Category)
                 .WithMany(c => c.Recipes)
                 .HasForeignKey(rc => rc.CategoryId);
+        }
+
+        private void ConfigureRecipeEquipment(EntityTypeBuilder<RecipeEquipment> builder)
+        {
+            builder.HasKey(re => new { re.RecipeId, re.EquipmentId });
+
+            builder.HasOne(re => re.Recipe)
+                .WithMany(r => r.Equipment)
+                .HasForeignKey(re => re.RecipeId);
+
+            builder.HasOne(rc => rc.Equipment)
+                .WithMany(e => e.Recipes)
+                .HasForeignKey(re => re.EquipmentId);
+        }
+
+            private void ConfigureRelatedRecipe(EntityTypeBuilder<RelatedRecipe> builder)
+        {
+            builder.HasKey(rr => new { rr.ParentRecipeId, rr.ChildRecipeId });
+
+            builder.HasOne(rr => rr.ParentRecipe)
+                .WithMany(r => r.RelatedRecipes)
+                .HasForeignKey(rr => rr.ParentRecipeId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
 
         private void ConfigureRecipe(EntityTypeBuilder<Recipe> builder)
