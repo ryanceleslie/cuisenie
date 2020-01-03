@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Core.Entities;
 using Core.Entities.RecipeAggregate;
 using Core.Entities.SuggestionAggregate;
+using Core.Entities.RecipeAggregate.Joiners;
 
 namespace Infrastructure.Data
 {
@@ -30,6 +31,7 @@ namespace Infrastructure.Data
             builder.Entity<RecipePreference>(ConfigureRecipePreference);
 
             // Joiner tables
+            //TODO once EF Core supports HasMany+WithMany, refactor these so you can drop joiner entities
             builder.Entity<RecipeCategory>(ConfigureRecipeCategory);
             builder.Entity<RecipeEquipment>(ConfigureRecipeEquipment);
             builder.Entity<RelatedRecipe>(ConfigureRelatedRecipe);

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Core.Entities.RecipeAggregate
+namespace Core.Entities.RecipeAggregate.Joiners
 {
     [Table("RecipeEquipment")]
     public class RecipeEquipment

@@ -1,5 +1,4 @@
-﻿
-using Core.Entities.RecipeAggregate;
+﻿using Core.Entities.RecipeAggregate.Joiners;
 using Core.Interfaces;
 using System.Collections.Generic;
 

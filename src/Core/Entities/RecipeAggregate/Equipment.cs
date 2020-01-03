@@ -1,4 +1,4 @@
-﻿
+﻿using Core.Entities.RecipeAggregate.Joiners;
 using System.Collections.Generic;
 
 namespace Core.Entities.RecipeAggregate

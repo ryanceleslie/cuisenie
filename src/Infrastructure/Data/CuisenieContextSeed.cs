@@ -4,6 +4,7 @@ using Core.Interfaces;
 using System.Collections.Generic;
 using Core.Entities.RecipeAggregate;
 using System.Linq;
+using Core.Entities.RecipeAggregate.Joiners;
 
 namespace Infrastructure.Data
 {
