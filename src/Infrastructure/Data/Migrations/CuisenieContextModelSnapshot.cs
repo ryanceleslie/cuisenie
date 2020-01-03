@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(MealPlannerContext))]
-    partial class MealPlannerContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(CuisenieContext))]
+    partial class CuisenieContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

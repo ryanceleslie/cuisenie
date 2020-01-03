@@ -9,9 +9,9 @@ namespace Infrastructure.Data
 {
     public class EfRepository<T> : IRepository<T> where T : BaseEntity
     {
-        protected readonly MealPlannerContext _context;
+        protected readonly CuisenieContext _context;
 
-        public EfRepository(MealPlannerContext context)
+        public EfRepository(CuisenieContext context)
         {
             _context = context;
         }

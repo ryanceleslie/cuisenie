@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(MealPlannerContext))]
+    [DbContext(typeof(CuisenieContext))]
     [Migration("20191216050712_VariousUpdates")]
     partial class VariousUpdates
     {

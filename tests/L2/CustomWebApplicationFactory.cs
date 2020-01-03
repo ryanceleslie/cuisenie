@@ -25,7 +25,7 @@ namespace L2
 
                 // Add a database context (ApplicationDbContext) using an in-memory 
                 // database for testing.
-                services.AddDbContext<MealPlannerContext>(options =>
+                services.AddDbContext<CuisenieContext>(options =>
                 {
                     options.UseInMemoryDatabase("InMemoryDbForTesting");
                     options.UseInternalServiceProvider(provider);
@@ -39,7 +39,7 @@ namespace L2
                 using (var scope = sp.CreateScope())
                 {
                     var scopedServices = scope.ServiceProvider;
-                    var db = scopedServices.GetRequiredService<MealPlannerContext>();
+                    var db = scopedServices.GetRequiredService<CuisenieContext>();
                     var loggerFactory = scopedServices.GetRequiredService<ILoggerFactory>();
 
                     var logger = scopedServices

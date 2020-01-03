@@ -25,7 +25,7 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MealPlannerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MealPlannerConnection")));
+            services.AddDbContext<CuisenieContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CuisenieConnection")));
 
             services.AddControllers();
 
@@ -44,7 +44,7 @@ namespace API
             // register swagger generator
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MealPlanner API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cuisenie API", Version = "v1" });
             });
         }
 
@@ -65,7 +65,7 @@ namespace API
             // specifying swagger json endpoint
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MealPlanner API v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cuisenie API v1");
             });
 
             app.UseRouting();

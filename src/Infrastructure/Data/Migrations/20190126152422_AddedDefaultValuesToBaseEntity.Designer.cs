@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(MealPlannerContext))]
+    [DbContext(typeof(CuisenieContext))]
     [Migration("20190126152422_AddedDefaultValuesToBaseEntity")]
     partial class AddedDefaultValuesToBaseEntity
     {
