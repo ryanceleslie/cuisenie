@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Core.Interfaces;
 using System;
+using Infrastructure.Data.Seed;
 
 namespace L2
 {
@@ -42,7 +43,7 @@ namespace L2
                 {
                     var scopedServices = scope.ServiceProvider;
                     var db = scopedServices.GetRequiredService<CuisenieContext>();
-                    var logger = scopedServices.GetRequiredService<IAppLogger<CuisenieContextSeed>>();
+                    var logger = scopedServices.GetRequiredService<IAppLogger<RecipeSeed>>();
 
                     // Ensure the database is created.
                     db.Database.EnsureCreated();
@@ -50,8 +51,8 @@ namespace L2
                     //TODO eventually I do want to seed the DB with data
                     try
                     {
-                        // Seed the database with test data.
-                        CuisenieContextSeed.SeedAsync(db, logger).Wait();
+                        // Seed the database with recipe test data.
+                        RecipeSeed.SeedAsync(db, logger).Wait();
                     }
                     catch (Exception ex)
                     {

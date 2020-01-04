@@ -2,8 +2,8 @@
 {
     public class Nutrition : BaseEntity
     {
-        public NutritionType Type { get; private set; }
-        public Measurement Measurement { get; private set; }
         public decimal Value { get; set; }
+        public string Measurement { get; set; }
+        public string Type { get;  set; }
     }
 }

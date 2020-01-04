@@ -3,7 +3,7 @@
 namespace Core.Entities.RecipeAggregate.Joiners
 {
     [Table("RecipeCategories")]
-    public class RecipeCategory
+    public class RecipeCategory : BaseEntity
     {
         public int RecipeId { get; set; }
         public Recipe Recipe { get; set; }

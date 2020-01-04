@@ -15,7 +15,6 @@ namespace UnitTests.Builders
         public int TestServings => 5;
         public TimeSpan TestPrep => TimeSpan.FromMinutes(15);
         public TimeSpan TestCook => TimeSpan.FromMinutes(30);
-        public TimeSpan TestReady => TimeSpan.FromMinutes(60);
         public string TestExternalUrl => "https://www.google.com";
 
         public RecipeBuilder()
@@ -35,7 +34,6 @@ namespace UnitTests.Builders
                 Servings = TestServings,
                 Prep = TestPrep,
                 Cook = TestCook,
-                Ready = TestReady,
                 ExternalUrl = TestExternalUrl
             };
 

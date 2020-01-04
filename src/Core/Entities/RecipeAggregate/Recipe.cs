@@ -11,7 +11,6 @@ namespace Core.Entities.RecipeAggregate
         public int Servings { get; set; }
         public TimeSpan Prep { get; set; }
         public TimeSpan Cook { get; set; }
-        public TimeSpan Ready { get; set; }
         public string ExternalUrl { get; set; }
 
         private List<RecipeEquipment> _equipment = new List<RecipeEquipment>();
@@ -37,7 +36,6 @@ namespace Core.Entities.RecipeAggregate
             int servings,
             TimeSpan prep,
             TimeSpan cook,
-            TimeSpan ready,
             string externalUrl,
             List<RecipeEquipment> equipment,
             List<Ingredient> ingredients,
@@ -51,7 +49,6 @@ namespace Core.Entities.RecipeAggregate
             Servings = servings;
             Prep = prep;
             Cook = cook;
-            Ready = ready;
             ExternalUrl = externalUrl;
             _equipment = equipment;
             _ingredients = ingredients;

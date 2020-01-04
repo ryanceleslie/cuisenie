@@ -4,14 +4,16 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(CuisenieContext))]
-    partial class CuisenieContextModelSnapshot : ModelSnapshot
+    [Migration("20200103172421_RemovedServiceSizeFromRecipe")]
+    partial class RemovedServiceSizeFromRecipe
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,111 +188,45 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.RecipeAggregate.Joiners.RecipeCategory", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CategoryId1")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Modified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
+                    b.HasKey("RecipeId", "CategoryId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("CategoryId1");
 
                     b.ToTable("RecipeCategories");
                 });
 
             modelBuilder.Entity("Core.Entities.RecipeAggregate.Joiners.RecipeEquipment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
 
                     b.Property<int>("EquipmentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("EquipmentId1")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Modified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
+                    b.HasKey("RecipeId", "EquipmentId");
 
                     b.HasIndex("EquipmentId");
-
-                    b.HasIndex("EquipmentId1");
 
                     b.ToTable("RecipeEquipment");
                 });
 
             modelBuilder.Entity("Core.Entities.RecipeAggregate.Joiners.RelatedRecipe", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Modified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("ParentRecipeId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ParentRecipeId1")
+                    b.Property<int>("ChildRecipeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
+                    b.HasKey("ParentRecipeId", "ChildRecipeId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParentRecipeId");
-
-                    b.HasIndex("ParentRecipeId1");
+                    b.HasIndex("ChildRecipeId");
 
                     b.ToTable("RelatedRecipes");
                 });
@@ -364,6 +300,9 @@ namespace Infrastructure.Data.Migrations
                     b.Property<TimeSpan>("Prep")
                         .HasColumnType("time");
 
+                    b.Property<TimeSpan>("Ready")
+                        .HasColumnType("time");
+
                     b.Property<int>("Servings")
                         .HasColumnType("int");
 
@@ -430,45 +369,47 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.RecipeAggregate.Joiners.RecipeCategory", b =>
                 {
-                    b.HasOne("Core.Entities.RecipeAggregate.Recipe", "Recipe")
-                        .WithMany("Categories")
+                    b.HasOne("Core.Entities.Category", "Category")
+                        .WithMany("Recipes")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Core.Entities.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId1")
+                    b.HasOne("Core.Entities.RecipeAggregate.Recipe", "Recipe")
+                        .WithMany("Categories")
+                        .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("Core.Entities.RecipeAggregate.Joiners.RecipeEquipment", b =>
                 {
-                    b.HasOne("Core.Entities.RecipeAggregate.Recipe", "Recipe")
-                        .WithMany("Equipment")
+                    b.HasOne("Core.Entities.RecipeAggregate.Equipment", "Equipment")
+                        .WithMany("Recipes")
                         .HasForeignKey("EquipmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Core.Entities.RecipeAggregate.Equipment", "Equipment")
-                        .WithMany()
-                        .HasForeignKey("EquipmentId1")
+                    b.HasOne("Core.Entities.RecipeAggregate.Recipe", "Recipe")
+                        .WithMany("Equipment")
+                        .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("Core.Entities.RecipeAggregate.Joiners.RelatedRecipe", b =>
                 {
-                    b.HasOne("Core.Entities.RecipeAggregate.Recipe", "Recipe")
+                    b.HasOne("Core.Entities.RecipeAggregate.Recipe", "ChildRecipe")
+                        .WithMany()
+                        .HasForeignKey("ChildRecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Entities.RecipeAggregate.Recipe", "ParentRecipe")
                         .WithMany("RelatedRecipes")
                         .HasForeignKey("ParentRecipeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("Core.Entities.RecipeAggregate.Recipe", "ParentRecipe")
-                        .WithMany()
-                        .HasForeignKey("ParentRecipeId1");
                 });
 
             modelBuilder.Entity("Core.Entities.RecipeAggregate.Nutrition", b =>

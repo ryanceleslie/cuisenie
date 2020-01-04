@@ -1,5 +1,6 @@
 using Core.Interfaces;
 using Infrastructure.Data;
+using Infrastructure.Data.Seed;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.Services.AppAuthentication;
@@ -21,12 +22,12 @@ namespace API
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var logger = services.GetRequiredService<IAppLogger<CuisenieContextSeed>>();
+                var logger = services.GetRequiredService<IAppLogger<RecipeSeed>>();
 
                 try
                 {
                     var context = services.GetRequiredService<CuisenieContext>();
-                    await CuisenieContextSeed.SeedAsync(context, logger);
+                    await RecipeSeed.SeedAsync(context, logger);
                 }
                 catch (Exception ex)
                 {
