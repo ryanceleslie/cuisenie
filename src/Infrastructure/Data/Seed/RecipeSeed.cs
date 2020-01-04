@@ -15,10 +15,8 @@ namespace Infrastructure.Data.Seed
         private static DbSet<Ingredient> _ingredients { get; set; }
         private static DbSet<Instruction> _instructions { get; set; }
 
-        public static async Task SeedAsync(CuisenieContext context, IAppLogger<RecipeSeed> logger, int? retry = 0)
+        public static async Task SeedAsync(CuisenieContext context, IAppLogger<RecipeSeed> logger)
         {
-            var retryForAvailability = retry.Value;
-
             try
             {
                 _recipes = context.Recipes;
@@ -56,12 +54,7 @@ namespace Infrastructure.Data.Seed
             }
             catch (Exception ex)
             {
-                if (retryForAvailability < 10)
-                {
-                    retryForAvailability++;
-                    logger.Error(ex, ex.Message);
-                    await SeedAsync(context, logger, retryForAvailability);
-                }
+                logger.Error(ex, ex.Message);
             }
         }
 
