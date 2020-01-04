@@ -1,5 +1,4 @@
-﻿using Core.Entities.RecipeAggregate.Joiners;
-using Core.Interfaces;
+﻿using Core.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -13,20 +12,11 @@ namespace Core.Entities.RecipeAggregate
         public TimeSpan Cook { get; set; }
         public string ExternalUrl { get; set; }
 
-        private List<RecipeEquipment> _equipment = new List<RecipeEquipment>();
-        public IEnumerable<RecipeEquipment> Equipment => _equipment;
-
         private List<Ingredient> _ingredients = new List<Ingredient>();
         public IEnumerable<Ingredient> Ingredients => _ingredients;
 
         private List<Instruction> _instructions = new List<Instruction>();
         public IEnumerable<Instruction> Instructions => _instructions;
-
-        private List<RecipeCategory> _categories = new List<RecipeCategory>();
-        public IEnumerable<RecipeCategory> Categories => _categories;
-
-        private List<RelatedRecipe> _relatedRecipes = new List<RelatedRecipe>();
-        public IEnumerable<RelatedRecipe> RelatedRecipes => _relatedRecipes;
 
 
         public Recipe() { }
@@ -37,11 +27,8 @@ namespace Core.Entities.RecipeAggregate
             TimeSpan prep,
             TimeSpan cook,
             string externalUrl,
-            List<RecipeEquipment> equipment,
             List<Ingredient> ingredients,
-            List<Instruction> instructions,
-            List<RecipeCategory> categories,
-            List<RelatedRecipe> relatedRecipes) : this()
+            List<Instruction> instructions) : this()
         {
             //TODO likely need to add more guards
 
@@ -50,11 +37,8 @@ namespace Core.Entities.RecipeAggregate
             Prep = prep;
             Cook = cook;
             ExternalUrl = externalUrl;
-            _equipment = equipment;
             _ingredients = ingredients;
             _instructions = instructions;
-            _categories = categories;
-            _relatedRecipes = relatedRecipes;
         }
     }
 }
