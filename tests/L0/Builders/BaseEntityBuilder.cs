@@ -1,7 +1,7 @@
 ﻿using Core.Entities;
 using Core.Specifications;
 
-namespace UnitTests.Builders
+namespace L0.Builders
 {
     public class BaseEntityBuilder
     {

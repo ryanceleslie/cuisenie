@@ -5,10 +5,10 @@ using FluentAssertions;
 using Moq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnitTests.Builders;
+using L0.Builders;
 using Xunit;
 
-namespace UnitTests.Core.Services
+namespace L0.Core.Services
 {
     public class SuggestionServiceTests
     {
