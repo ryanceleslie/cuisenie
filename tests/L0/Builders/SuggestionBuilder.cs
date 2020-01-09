@@ -3,7 +3,7 @@ using Core.Entities.SuggestionAggregate;
 using Core.Specifications;
 using System;
 
-namespace UnitTests.Builders
+namespace L0.Builders
 {
     public class SuggestionBuilder
     {
