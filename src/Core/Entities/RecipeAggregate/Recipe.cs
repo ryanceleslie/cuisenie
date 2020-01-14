@@ -11,6 +11,7 @@ namespace Core.Entities.RecipeAggregate
         public TimeSpan Prep { get; set; }
         public TimeSpan Cook { get; set; }
         public string ExternalUrl { get; set; }
+        public string PictureUrl { get; set; }
 
         private List<Ingredient> _ingredients = new List<Ingredient>();
         public IEnumerable<Ingredient> Ingredients => _ingredients;

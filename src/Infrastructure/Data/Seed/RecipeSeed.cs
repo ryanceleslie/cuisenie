@@ -73,6 +73,7 @@ namespace Infrastructure.Data.Seed
                 _.Prep = TimeSpan.FromHours(1);
                 _.Cook = TimeSpan.FromHours(1);
                 _.ExternalUrl = "http://www.google.com";
+                _.PictureUrl = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
                 return _;
             });
         }
