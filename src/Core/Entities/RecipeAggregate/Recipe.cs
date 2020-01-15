@@ -10,14 +10,15 @@ namespace Core.Entities.RecipeAggregate
         public int Servings { get; set; }
         public TimeSpan Prep { get; set; }
         public TimeSpan Cook { get; set; }
-        public string ExternalUrl { get; set; }
         public string PictureUrl { get; set; }
+        public string VideoUrl { get; set; }
+        public string ExternalUrl { get; set; }
 
-        private List<Ingredient> _ingredients = new List<Ingredient>();
-        public IEnumerable<Ingredient> Ingredients => _ingredients;
+        private List<IngredientSet> _ingredientSets = new List<IngredientSet>();
+        public IEnumerable<IngredientSet> IngredientSets => _ingredientSets;
 
-        private List<Instruction> _instructions = new List<Instruction>();
-        public IEnumerable<Instruction> Instructions => _instructions;
+        private List<InstructionSet> _instructionSets = new List<InstructionSet>();
+        public IEnumerable<InstructionSet> InstructionSets => _instructionSets;
 
 
         public Recipe() { }
@@ -27,9 +28,11 @@ namespace Core.Entities.RecipeAggregate
             int servings,
             TimeSpan prep,
             TimeSpan cook,
+            string pictureUrl, 
+            string videoUrl,
             string externalUrl,
-            List<Ingredient> ingredients,
-            List<Instruction> instructions) : this()
+            List<IngredientSet> ingredientSets,
+            List<InstructionSet> instructionSets) : this()
         {
             //TODO likely need to add more guards
 
@@ -37,9 +40,11 @@ namespace Core.Entities.RecipeAggregate
             Servings = servings;
             Prep = prep;
             Cook = cook;
+            PictureUrl = pictureUrl;
+            VideoUrl = videoUrl;
             ExternalUrl = externalUrl;
-            _ingredients = ingredients;
-            _instructions = instructions;
+            _ingredientSets = ingredientSets;
+            _instructionSets = instructionSets;
         }
     }
 }

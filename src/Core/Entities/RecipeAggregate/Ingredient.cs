@@ -6,10 +6,22 @@ namespace Core.Entities.RecipeAggregate
     public class Ingredient : BaseEntity
     {
         public decimal Quantity { get; set; }
-        public string Measurement { get; private set; }
+        public string Measurement { get; set; }
         public Food Food { get; set; }
         public string Description { get; set; }
-        public Recipe Recipe { get; set; }
+        public IngredientSet IngredientSet { get; set; }
+
+        public Ingredient() { }
+
+        public Ingredient(decimal quantity, string measurement, Food food, string description, IngredientSet ingredientSet)
+        {
+            Quantity = quantity;
+            Measurement = measurement;
+            Food = food;
+            Description = description;
+            IngredientSet = ingredientSet;
+        }
+
         //public IEnumerable<Nutrition> TotalNutrition()
         //{
         //    var total = new List<Nutrition>();
