@@ -19,7 +19,7 @@ namespace API.Controllers
             _recipeService = recipeService;
         }
         
-        // GET: Recipes
+        // GET: Recipe
         [HttpGet]
         public async Task<ActionResult> Get()
         {
@@ -112,7 +112,7 @@ namespace API.Controllers
             return BadRequest("Post(Recipe recipe) - Failed");
         }
 
-        // DELETE: Recipes/5
+        // DELETE: Recipe/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
