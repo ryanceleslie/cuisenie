@@ -14,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Web.Data;
+using Infrastructure.Data;
+using Core.Interfaces;
 
 namespace Web
 {
@@ -44,6 +46,8 @@ namespace Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+
+            //TODO add api http client injection
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
