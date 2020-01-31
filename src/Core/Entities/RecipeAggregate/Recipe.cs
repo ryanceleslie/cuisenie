@@ -13,6 +13,8 @@ namespace Core.Entities.RecipeAggregate
         public string PictureUrl { get; set; }
         public string VideoUrl { get; set; }
         public string ExternalUrl { get; set; }
+        public string Notes { get; set; }
+        public bool IsArchived { get; set; } = false;
 
         private List<IngredientSet> _ingredientSets = new List<IngredientSet>();
         public IEnumerable<IngredientSet> IngredientSets => _ingredientSets;
@@ -31,6 +33,8 @@ namespace Core.Entities.RecipeAggregate
             string pictureUrl, 
             string videoUrl,
             string externalUrl,
+            string notes,
+            bool isArchived,
             List<IngredientSet> ingredientSets,
             List<InstructionSet> instructionSets) : this()
         {
@@ -43,6 +47,8 @@ namespace Core.Entities.RecipeAggregate
             PictureUrl = pictureUrl;
             VideoUrl = videoUrl;
             ExternalUrl = externalUrl;
+            Notes = notes;
+            IsArchived = isArchived;
             _ingredientSets = ingredientSets;
             _instructionSets = instructionSets;
         }

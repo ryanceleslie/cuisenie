@@ -47,7 +47,7 @@ namespace Web
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
 
-            //TODO add api http client injection
+            //TODO add http client factory injection
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
