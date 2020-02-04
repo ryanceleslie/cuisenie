@@ -91,6 +91,8 @@ namespace Infrastructure.Data.Seed
                 _.ModifiedBy = "Ryan Again";
                 _.Prep = TimeSpan.FromHours(1);
                 _.Cook = TimeSpan.FromHours(1);
+                _.IsArchived = false;
+                _.Notes = "These are some notes";
                 _.ExternalUrl = "http://www.google.com";
                 _.PictureUrl = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
                 _.VideoUrl = "https://www.youtube.com/watch?v=gBJjRYk0yC0";
