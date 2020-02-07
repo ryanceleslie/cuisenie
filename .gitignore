@@ -265,3 +265,5 @@ __pycache__/
 appsettings.Development.json
 appsettings.Production.json
 **/azurekeyvault.json
+**/secrets.json
+**/.directory

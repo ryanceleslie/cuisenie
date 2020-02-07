@@ -27,7 +27,7 @@ namespace Web
                 {
                     // Azure Key Vault required for the Azure AD auth strings
                     // Need environment variables for eventual Azure AppSettings override
-                    config.AddJsonFile("azurekeyvault.json", optional: true, reloadOnChange: true)
+                    config.AddJsonFile("secrets.json", optional: true, reloadOnChange: true)
                         .AddEnvironmentVariables();
                     var builtConfig = config.Build();
 
