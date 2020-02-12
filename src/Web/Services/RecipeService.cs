@@ -14,6 +14,7 @@ namespace Web.Services
 {
     public class RecipeService
     {
+        //TODO this service is deprecated in favor of direct SQL access in the Blazor app, instead of an API
         private readonly HttpClient _client;
         public RecipeService(HttpClient client, IHttpContextAccessor httpContextAccessor)
         {
@@ -36,7 +37,6 @@ namespace Web.Services
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", httpContextAccessor.HttpContext.Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"]);
 
-            _client = client;
             _client = client;
         }
 
