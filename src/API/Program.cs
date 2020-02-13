@@ -44,7 +44,7 @@ namespace API
                 {
                     // Azure Key Vault required for the DB connection string
                     // Need environment variables for eventual Azure AppSettings override
-                    config.AddJsonFile("azurekeyvault.json", optional: true, reloadOnChange: true)
+                    config.AddJsonFile("secrets.json", optional: true, reloadOnChange: true)
                         .AddEnvironmentVariables();
                     var builtConfig = config.Build();
 

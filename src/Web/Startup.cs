@@ -50,26 +50,6 @@ namespace Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
-
-            //TODO add http client factory injection
-            var temp = Configuration["ApiClient"];
-
-            services.AddHttpContextAccessor();
-            services.AddHttpClient<RecipeService>(c => 
-            {
-                // access the DI container
-                var serviceProvider = services.BuildServiceProvider();
-                // Find the HttpContextAccessor service
-                var httpContextAccessor = serviceProvider.GetService<IHttpContextAccessor>();
-                // Get the bearer token from the request context (header)
-                var bearerToken = httpContextAccessor.HttpContext.Request
-                          .Headers["Authorization"]
-                          .FirstOrDefault(h => h.StartsWith("bearer ", StringComparison.InvariantCultureIgnoreCase));
-
-                c.BaseAddress = new Uri("https://cuisenie-api-test.azurewebsites.net");
-                c.DefaultRequestHeaders.Accept.Clear();
-                c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
