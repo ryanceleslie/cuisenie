@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Identity;
 
 namespace API
 {
@@ -26,6 +28,9 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CuisenieContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CuisenieConnection")));
+
+            // Adds Microsoft Identity platform (AAD v2.0) support to protect this Api
+            //services.AddProtectedWebApi(Configuration);
 
             services.AddControllers();
 
