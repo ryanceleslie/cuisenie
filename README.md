@@ -16,6 +16,8 @@ In addition to pulling down the source, you need to setup a secrets.json file in
 
 Then from the command prompt, login in to Azure `az login --tenant blah.onmicrosoft.com` and it will create a local token that can be used for debugging.
 
+Review the appsettings.json file to know what secrets to keep and the proper format.
+
 ## Azure
 
 This app is deployed using Azure DevOps CI/CD pipelines to multiple Azure App Services. It also utilized API Management tools for API access and leverages Azure Key Vault for app secrets like DB connection strings to an Azure SQL DB. For cost purposes, I won't be using APIm for personal use.
