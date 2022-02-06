@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A72A3183-7A31-4786-A57A-A733C42D22F0}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FC6F798F-9185-4BC4-9CDE-B077346C3E02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{17EACEBF-BAAB-44C0-8572-045DC7E0AF42}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipe.API", "Services\Recipe\Recipe.API\Recipe.API.csproj", "{BD7FD8FE-5637-4633-B1F9-B10EA92CBBA8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{B432F6CB-BAB8-43D5-AD1B-E132C9071A0C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Recipe", "Recipe", "{9A1CB5D2-0FA7-4F4E-8664-1A9F17149522}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApps", "WebApps", "{B9708BBD-CE9A-4FC8-BFD3-585F54CC0350}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD7FD8FE-5637-4633-B1F9-B10EA92CBBA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD7FD8FE-5637-4633-B1F9-B10EA92CBBA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD7FD8FE-5637-4633-B1F9-B10EA92CBBA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD7FD8FE-5637-4633-B1F9-B10EA92CBBA8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BD7FD8FE-5637-4633-B1F9-B10EA92CBBA8} = {9A1CB5D2-0FA7-4F4E-8664-1A9F17149522}
+		{B432F6CB-BAB8-43D5-AD1B-E132C9071A0C} = {A72A3183-7A31-4786-A57A-A733C42D22F0}
+		{9A1CB5D2-0FA7-4F4E-8664-1A9F17149522} = {B432F6CB-BAB8-43D5-AD1B-E132C9071A0C}
+		{B9708BBD-CE9A-4FC8-BFD3-585F54CC0350} = {A72A3183-7A31-4786-A57A-A733C42D22F0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40BCF603-628D-492B-91FD-9CB2596D1AF5}
+	EndGlobalSection
+EndGlobal
